@@ -33,4 +33,3 @@ exports.getPesquisar = (req, res) => {
     })
 }
 
-

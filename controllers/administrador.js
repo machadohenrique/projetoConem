@@ -28,6 +28,12 @@ exports.postCriarAdministrador = (req, res, next) => {
     })
 }
 
+
+
+
+
+
+
 exports.postCriarVaga = (req, res) => {
     const { nomeVaga, descricaoVaga, salario, cidade, dataPublicacaoVaga } = req.body;
 
