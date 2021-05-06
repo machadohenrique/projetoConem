@@ -56,16 +56,12 @@ exports.atualizarCadastroCandidato = (req, res) => {
                     id: candidatoId
                 }
             }).then(candidatos => {
-                if (candidatos == undefined) {
-                    res.status(404).json({
-                        menssage: 'Não existe perfil com este Id'
-                    });
-                } else {
-                    res.status(201).json({
-                        error: false,
+                candidatos.senha = undefined;
+                res.statusCode = 200,
+                    res.json({
+                        candidatos,
                         menssage: 'Perfil atualizado com sucesso'
-                    })
-                }
+                    });
             })
         })
     }
