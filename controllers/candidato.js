@@ -37,7 +37,7 @@ exports.atualizarCadastroCandidato = (req, res) => {
     const candidatoId = req.params.id;
     const { nome, email, senha } = req.body;
 
-    if (isNaN(req.params.id)) {
+    if (isNaN(candidatoId)) {
         res.sendStatus(400)
     } else {
         let salt = bcrypt.genSaltSync(10);
