@@ -23,7 +23,6 @@ exports.postCadastroUsuario = (req, res, next) => {
                     error: true,
                     error: error
                 }))
-
         } else {
             res.status(409).json({
                 menssage: "Este candidato já possui um cadastro."

@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-//const bodyParser = require("body-parser");
 const connection = require("./database/data");
 const multer = require("multer");
 //const candidato = require("./database/Usuario");
@@ -20,7 +19,7 @@ connection
     })
 
 
-//app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false }))
 app.use(express.json());
 
 app.use((req, res, next) => {
