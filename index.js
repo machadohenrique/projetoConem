@@ -64,8 +64,10 @@ const upload = multer({
 
 app.post("/candidatoCadastro", upload.single('arquivo'), candidatoController.postCadastroUsuario);
 app.post("/administradorCadastro", administradorController.postCriarAdministrador);
-app.put("/atualizarCadastroCandidato/:id", candidatoController.atualizarCadastroCandidato);
+app.put("/atualizarCadastroCandidato/:id", upload.single('arquivo'), candidatoController.atualizarCadastroCandidato);
+app.post("/administradorLogin", administradorController.postLoginAdministrador)
 
+app.post("/candidatoLogin", candidatoController.postCandidatoLogin)
 app.post("/cadastroVagas", administradorController.postCriarVaga);
 app.get("/pesquisar/:id", vagasController.getPesquisar);
 app.get("/listarVagas", vagasController.getListarVagas);
