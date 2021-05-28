@@ -9,6 +9,7 @@ const candidatoController = require('./controllers/candidato');
 const vagasController = require('./controllers/vagas');
 const administradorController = require("./controllers/administrador");
 
+
 connection
     .authenticate()
     .then(() => {
@@ -66,13 +67,13 @@ app.post("/candidatoCadastro", upload.single('arquivo'), candidatoController.pos
 app.post("/administradorCadastro", administradorController.postCriarAdministrador);
 app.put("/atualizarCadastroCandidato/:id", upload.single('arquivo'), candidatoController.atualizarCadastroCandidato);
 app.post("/administradorLogin", administradorController.postLoginAdministrador)
-
 app.post("/candidatoLogin", candidatoController.postCandidatoLogin)
-app.post("/cadastroVagas", administradorController.postCriarVaga);
+
+app.post("/cadastroVagas", vagasController.postCriarVaga);
 app.get("/pesquisar/:id", vagasController.getPesquisar);
 app.get("/listarVagas", vagasController.getListarVagas);
-app.delete("/deletarVagas/:id", administradorController.deletarVagas);
-app.put("/atualizaVaga/:id", administradorController.atualizarVagas);
+app.delete("/deletarVagas/:id", vagasController.deletarVagas);
+app.put("/atualizaVaga/:id", vagasController.atualizarVagas);
 
 
 

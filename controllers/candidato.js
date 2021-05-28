@@ -102,24 +102,5 @@ exports.atualizarCadastroCandidato = (req, res) => {
     }
 }
 
-/*
-app.delete("/candidatoDelete/:id", (req, res) => {
-    const candidatoId = req.params.id;
-    Candidato.destroy({
-        where: {
-            id: candidatoId
-        }
-    })
-        .then(status => res.status(201).json({
-            error: false,
-            menssage: 'Candidato deletado com sucesso'
-        }))
-        .catch(error => res.json({
-            error: true,
-            error: error
-        }))
-})
-*/
-
 
 

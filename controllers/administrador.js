@@ -1,4 +1,3 @@
-const vagasEmprego = require("../database/Vagas");
 const bcrypt = require("bcrypt");
 const Administrador = require("../database/Administrador");
 const jwt = require("jsonwebtoken");
@@ -62,67 +61,3 @@ exports.postCriarAdministrador = (req, res, next) => {
         }
     })
 }
-
-exports.postCriarVaga = (req, res) => {
-    const { nomeVaga, descricaoVaga, salario, cidade, dataPublicacaoVaga } = req.body;
-
-    vagasEmprego.create({
-        nomeVaga: nomeVaga,
-        descricaoVaga: descricaoVaga,
-        salario: salario,
-        cidade: cidade,
-        dataPublicacaoVaga: dataPublicacaoVaga
-
-    }).then(status => res.status(201).json({
-        error: false,
-        menssage: 'Vaga criada com sucesso!'
-    }))
-        .catch(error => res.json({
-            error: true,
-            error: error
-        }))
-}
-
-exports.atualizarVagas = (req, res) => {
-    const vagaId = req.params.id;
-    const { nomeVaga, descricaoVaga, salario, cidade, dataPublicacaoVaga } = req.body;
-
-    vagasEmprego.update({
-        nomeVaga: nomeVaga,
-        descricaoVaga: descricaoVaga,
-        salario: salario,
-        cidade: cidade,
-        dataPublicacaoVaga: dataPublicacaoVaga
-    }, {
-        where: {
-            id: vagaId
-        }
-    })
-        .then(vagas => res.status(201).json({
-            error: false,
-            menssage: 'Vaga atualizada com sucesso'
-        }))
-
-        .catch(error => res.json({
-            error: true,
-            error: error
-        }))
-}
-
-exports.deletarVagas = (req, res) => {
-    const vagasId = req.params.id;
-
-    vagasEmprego.destroy({
-        where: {
-            id: vagasId
-        }
-    }).then(status => res.status(200).json({
-        error: false,
-        menssage: 'A vaga foi deletada com sucesso!'
-    }))
-        .catch(error => res.json({
-            error: true,
-            error: error
-        }))
-}
-
